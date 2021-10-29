@@ -78,12 +78,6 @@ RUN set -eux; \
     export PATH=$PATH":/usr/bin" \
 	export COMPOSER_HOME="$(mktemp -d)"; \
 	composer create-project --no-interaction "sanduhrs/identity-provider-project:$IDENTITY_PROVIDER_VERSION" ./; \
-	mkdir keys; \
-	cp web/sites/default/default.settings.php web/sites/default/settings.php; \
-	echo "\$databases['default']['default'] = array (\n  'database' => 'sites/default/files/.ht.sqlite',\n  'prefix' => '',\n  'namespace' => 'Drupal\\Core\\Database\\Driver\\sqlite',\n  'driver' => 'sqlite',\n);" >> web/sites/default/settings.php; \
-	echo "\$settings['config_sync_directory'] = 'sites/default/files/config_`head -c 500 /dev/urandom | tr -dc 'a-zA-Z0-9~%^&*_-' | fold -w 64 | head -n 1`/sync';" >> web/sites/default/settings.php; \
-	cp web/sites/default/default.services.yml web/sites/default/services.yml; \
-	chown -R www-data:www-data web/sites web/modules web/themes keys; \
 	rmdir /var/www/html; \
 	ln -sf /opt/drupal/web /var/www/html; \
 	# delete composer cache

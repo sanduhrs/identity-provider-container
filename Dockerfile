@@ -72,7 +72,7 @@ RUN { \
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/
 
-ENV IDENTITY_PROVIDER_VERSION 0.0.30
+ENV IDENTITY_PROVIDER_VERSION 0.0.32
 
 WORKDIR /opt/drupal
 RUN set -eux; \

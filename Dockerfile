@@ -61,6 +61,7 @@ RUN set -eux; \
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
+# see https://symfony.com/doc/current/performance.html
 RUN { \
 		echo 'opcache.memory_consumption=128'; \
 		echo 'opcache.interned_strings_buffer=8'; \
@@ -71,7 +72,7 @@ RUN { \
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/
 
-ENV IDENTITY_PROVIDER_VERSION 0.0.27
+ENV IDENTITY_PROVIDER_VERSION 0.0.28
 
 WORKDIR /opt/drupal
 RUN set -eux; \

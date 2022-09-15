@@ -1,5 +1,5 @@
 # from https://www.drupal.org/docs/system-requirements/php-requirements
-FROM php:7.4-apache-buster
+FROM php:8.1-apache-buster
 
 # install the PHP extensions we need
 RUN set -eux; \
@@ -72,7 +72,7 @@ RUN { \
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/
 
-ENV IDENTITY_PROVIDER_VERSION 0.0.28
+ENV IDENTITY_PROVIDER_VERSION 0.0.29
 
 WORKDIR /opt/drupal
 RUN set -eux; \
